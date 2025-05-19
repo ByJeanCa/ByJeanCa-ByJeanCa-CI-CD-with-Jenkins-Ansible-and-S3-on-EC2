@@ -1,0 +1,4 @@
+- import_tasks: clone_repo.yml
+- import_tasks: setup_app.yml
+- import_tasks: configure_service.yml
+- import_tasks: validate.yml

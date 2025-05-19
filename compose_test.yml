@@ -1,0 +1,14 @@
+services:
+  s3-app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports:
+      - "5000:5000"
+    networks:
+      - jenkins-net                      
+    command: ["pytest", "test.py"] 
+
+networks:
+  jenkins-net:
+    external: true

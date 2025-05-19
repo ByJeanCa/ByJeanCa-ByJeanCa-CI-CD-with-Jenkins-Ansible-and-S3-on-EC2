@@ -1,0 +1,11 @@
+---
+- name: Check server response
+  ansible.builtin.uri:
+    url: "http://3.148.162.105:5000"
+    return_content: yes
+  register: result
+  failed_when: result.status != 200
+
+- name: Show server response
+  debug:
+    msg: "{{ result.content }}"

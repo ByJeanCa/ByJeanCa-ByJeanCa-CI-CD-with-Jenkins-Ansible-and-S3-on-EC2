@@ -1,0 +1,14 @@
+---
+- name: Enable and start flask service
+  systemd:
+    name: flask-app
+    enabled: true
+    state: started
+  become: true
+
+- name: Ensure S3_BUCKET env variable is present in app service
+  lineinfile:
+    path: /etc/environment
+    line: 'S3_BUCKET=s3-app-web-test-1'
+    create: yes
+  notify: Restart flask app

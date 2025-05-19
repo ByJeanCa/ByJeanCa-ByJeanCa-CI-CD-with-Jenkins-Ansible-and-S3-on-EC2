@@ -1,0 +1,4 @@
+local_files: /tmp/app/
+local_compressed_files: /tmp/compressed
+remote_temp_path: /tmp/remote_deploy
+server_path: /home/ec2-user/w3-app

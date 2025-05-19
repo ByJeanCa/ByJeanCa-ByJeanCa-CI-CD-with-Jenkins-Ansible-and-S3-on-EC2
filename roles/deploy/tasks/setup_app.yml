@@ -1,0 +1,51 @@
+---
+- name: Get current date
+  set_fact:
+    current_date: "{{ lookup('pipe', 'date +%Y-%m-%d_%H-%M-%S') }}"
+
+- name: Ensure compressed dir exists
+  ansible.builtin.file:
+    path: "{{ local_compressed_files }}"
+    state: directory
+  delegate_to: localhost
+  become: false
+
+- name: Compress app folder
+  ansible.builtin.archive:
+    path: "{{ local_files }}/app/"
+    dest: "{{ local_compressed_files }}/app_{{ current_date }}.tar.gz"
+    format: gz
+  delegate_to: localhost
+  become: false
+
+- name: Ensure remote temp path exists
+  ansible.builtin.file:
+    path: "{{ remote_temp_path }}"
+    state: directory
+
+- name: Copy ZIP file to remote temp path
+  ansible.builtin.copy:
+    src: "{{ local_compressed_files }}/app_{{ current_date }}.tar.gz"
+    dest: "{{ remote_temp_path }}/app_{{ current_date }}.tar.gz"
+
+- name: Unzip files on remote
+  ansible.builtin.unarchive:
+    src: "{{ remote_temp_path }}/app_{{ current_date }}.tar.gz"
+    dest: "{{ remote_temp_path }}/"
+    remote_src: yes
+
+- name: Remove ZIP from remote
+  ansible.builtin.file:
+    path: "{{ remote_temp_path }}/app_{{ current_date }}.tar.gz"
+    state: absent
+
+- name: Copy unzipped files to public path
+  ansible.builtin.copy:
+    src: "{{ remote_temp_path }}/"
+    dest: "{{ server_path }}"
+    remote_src: yes
+
+- name: Delete remote temp directory
+  ansible.builtin.file:
+    path: "{{ remote_temp_path }}"
+    state: absent

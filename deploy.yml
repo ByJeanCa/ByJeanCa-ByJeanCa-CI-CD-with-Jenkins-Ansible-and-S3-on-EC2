@@ -1,0 +1,9 @@
+---
+- name: Running tests
+  hosts: all
+  become: true
+  roles:
+    - deploy
+  vars_files:
+    - main.yml
+    
