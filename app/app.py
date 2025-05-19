@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import os
 import boto3
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 s3 = boto3.client('s3')
 
