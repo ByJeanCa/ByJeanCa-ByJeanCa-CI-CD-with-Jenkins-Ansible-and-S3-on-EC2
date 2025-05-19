@@ -13,6 +13,15 @@
       <input type="file" name="file" id="file">
       <button type="submit">Subir</button>
     </form>
+
+    {% if files %}
+      <h2>Archivos en S3:</h2>
+      <ul>
+        {% for file in files %}
+          <li>{{ file }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 </body>
 </html>
