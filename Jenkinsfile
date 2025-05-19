@@ -10,7 +10,7 @@ pipeline {
 
         stage("Checkout") {
             steps {
-                git url: 'https://github.com/ByJeanCa/web-app-test', credentialsId: 'git-cred', branch: 'main'
+                checkout scm
             }
         }
 
