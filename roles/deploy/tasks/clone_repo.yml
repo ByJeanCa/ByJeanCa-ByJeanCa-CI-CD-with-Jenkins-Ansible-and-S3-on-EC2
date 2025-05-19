@@ -8,7 +8,7 @@
 
 - name: Clone app web respo
   ansible.builtin.git:
-    repo: https://github.com/ByJeanCa/web-app-test.git
+    repo: https://github.com/ByJeanCa/ByJeanCa-ByJeanCa-CI-CD-with-Jenkins-Ansible-and-S3-on-EC2
     dest: "{{ local_files }}"
     version: main
   delegate_to: localhost
