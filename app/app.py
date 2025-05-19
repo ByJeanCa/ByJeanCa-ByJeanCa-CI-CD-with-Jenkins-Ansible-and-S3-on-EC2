@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import boto3
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
 s3 = boto3.client('s3')
 BUCKET_NAME = os.getenv('S3_BUCKET')
