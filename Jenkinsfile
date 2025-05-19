@@ -21,9 +21,9 @@ pipeline {
             }
         }
         stage("Deploy") {
-         //  when {
-         //     branch 'main'
-        //   }
+            when {
+                branch 'main'
+            }
             steps {
                 withCredentials([string(credentialsId: 'awx-cred', variable: 'AWS_TOKEN')]) {
                     sh '''
