@@ -80,26 +80,3 @@ ansible-galaxy collection install -r collections/requirements.yml
 
 ---
 
-## ✅ Ejemplo de Uso Real
-
-> Este repositorio fue usado para desplegar automáticamente una API Flask en EC2, como parte de una prueba técnica para una posición DevOps. El flujo contempla desde la clonación del código hasta la validación de que el servicio esté corriendo correctamente en el puerto 5000.
-
----
-
-## 💼 ¿Cómo incluirlo en tu CV o LinkedIn?
-
-**Proyecto destacado: "Flask Deploy Automation (Ansible + CI/CD)"**
-Automatización completa del despliegue de una aplicación Flask usando Ansible y Jenkins, incluyendo:
-
-* Clonación y compresión local
-* Envio y extracción remota en EC2
-* Configuración de systemd para servicio Flask
-* Validación HTTP automatizada
-
-Demuestra experiencia real en automatización, estructura profesional de Ansible y pensamiento DevOps.
-
----
-
-## 📩 Contacto / Soporte
-
-Si quieres feedback sobre tu implementación o tienes dudas, puedes crear un Issue o un Pull Request.
